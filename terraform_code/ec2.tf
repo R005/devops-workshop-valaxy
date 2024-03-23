@@ -17,7 +17,7 @@ resource "aws_instance" "dop2" {
 
 resource "aws_security_group" "dop2sg" {
     name = "dop2sg"
-    description = "SSH Access"
+    description = "SSH and Jenkins Access"
     vpc_id = aws_vpc.dop2vpc.id
 
     ingress {
@@ -44,12 +44,13 @@ resource "aws_security_group" "dop2sg" {
     }
 
     tags = {
-      Name = "ssh-port"
+      Name = "ssh-jenkins-ports"
     }
 }
 
 resource "aws_vpc" "dop2vpc" {
   cidr_block = "10.0.0.0/16"
+  
   tags = {
     Name = "dop2vpc"
   }
